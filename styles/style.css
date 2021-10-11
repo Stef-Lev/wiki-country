@@ -29,6 +29,13 @@ header {
     background-color: #ffffff;
     border-radius: 8px;
 }
+.info {
+    padding: 20px 10px 32px;
+}
+
+.info p, hr {
+    margin-top: 8px;
+}
 
 .card img {
     width: 100%;
