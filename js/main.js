@@ -31,7 +31,18 @@ const Countries = Backbone.Collection.extend({
 });
 
 const CountriesView = Backbone.View.extend({
-    el: '#container',
+    el: '.cards-container',
+    template: _.template('<div class="card">\n' +
+        '        <img src="<%= flagURL %>" alt="flag"/>\n' +
+        '        <div class="info">\n' +
+        '            <h3>Greece</h3>\n' +
+        '            <hr/>\n' +
+        '            <p><strong>Capital:</strong> <%= capital %></p>\n' +
+        '            <p><strong>Subregion:</strong> <%= subregion %></p>\n' +
+        '            <p><strong>Region:</strong> <%= region %></p>\n' +
+        '            <p><strong>Population:</strong> <%= population %></p>\n' +
+        '        </div>\n' +
+        '    </div>'),
     model: new Country(),
     initialize: function() {
         _.bindAll(this, 'render');
@@ -43,7 +54,14 @@ const CountriesView = Backbone.View.extend({
     },
     render: function() {
         this.$el.empty();
+        this.addAll();
         return this;
+    },
+    addAll: function() {
+        this.collection.each(this.addOne, this);
+    },
+    addOne: function(model) {
+        this.$el.append(this.template(model.toJSON()));
     }
 });
 
