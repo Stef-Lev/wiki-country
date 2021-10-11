@@ -1,0 +1,79 @@
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color:#dae2e3;
+}
+header {
+    padding: 22px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px -4px 5px 9px rgba(0,0,0,0.62);
+    -moz-box-shadow: 0px -4px 5px 9px rgba(0,0,0,0.62);
+    box-shadow: 0px -4px 5px 9px rgba(0,0,0,0.25);
+}
+.cards-container {
+    padding: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.card {
+    -webkit-box-shadow: 12px 12px 9px -5px rgba(0,0,0,0.39);
+    -moz-box-shadow: 12px 12px 9px -5px rgba(0,0,0,0.39);
+    box-shadow: 12px 12px 9px -5px rgba(0,0,0,0.39);
+    /*height: 100px;*/
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+@media screen and (max-width: 491px)  {
+    .card {
+        flex: 0 1 100%;
+        margin-bottom: 5%;
+    }
+    .cards-container {
+        gap: 0;
+    }
+}
+
+@media screen and (min-width: 492px) and (max-width: 667px)  {
+    .card {
+        flex: 0 1 48.5%;
+        margin-bottom: 3%;
+    }
+    .cards-container {
+        gap: 3%;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 991px)  {
+    .card {
+        flex: 0 1 31%;
+        margin-bottom: 3%;
+    }
+    .cards-container {
+        gap: 3%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card {
+        flex: 0 1 23.5%;
+        margin-bottom: 2%;
+    }
+    .cards-container {
+        gap: 2%;
+    }
+}
+
+
+
