@@ -33,9 +33,11 @@ const Countries = Backbone.Collection.extend({
 const CountriesView = Backbone.View.extend({
     el: '.cards-container',
     template: _.template('<div class="card">\n' +
-        '        <img src="<%= flagURL %>" alt="flag"/>\n' +
+        '        <div class="img-container">\n' +
+        '           <img src="<%= flagURL %>" alt="flag"/>\n' +
+        '        </div>\n' +
         '        <div class="info">\n' +
-        '            <h3>Greece</h3>\n' +
+        '            <h3><%= name %></h3>\n' +
         '            <hr/>\n' +
         '            <p><strong>Capital:</strong> <%= capital %></p>\n' +
         '            <p><strong>Subregion:</strong> <%= subregion %></p>\n' +

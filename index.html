@@ -19,10 +19,27 @@
             <input id="search" type="search" placeholder="Search for a country" autofocus required />
             <button type="submit">Go</button>
         </form>
-        <select>
-            <option>01</option>
-            <option>02</option>
-        </select>
+        <div class="select_wrap">
+            <ul class="default_option">
+                <li>
+                    <p>Pizzas</p>
+                </li>
+            </ul>
+            <ul class="select_ul">
+                <li>
+                    <p>Pizzas</p>
+                </li>
+                <li>
+                    <p>Burget</p>
+                </li>
+                <li>
+                    <p>Ice Cream</p>
+                </li>
+                <li>
+                    <p>Fried Potatoes</p>
+                </li>
+            </ul>
+        </div>
 
     </section>
     <section class="cards-container">
@@ -45,6 +62,17 @@
 <script src="js/lib/jquery-min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
+<script>
+    $(".default_option").click(function(){
+        $(this).parent().toggleClass("active");
+    })
+
+    $(".select_ul li").click(function(){
+        var currentele = $(this).html();
+        $(".default_option li").html(currentele);
+        $(this).parents(".select_wrap").removeClass("active");
+    })
+</script>
 <script src="js/main.js"></script>
 
 </body>
