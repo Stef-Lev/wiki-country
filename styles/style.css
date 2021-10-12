@@ -59,13 +59,13 @@ header {
 
 .actions_container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     padding: 22px;
 }
 
 form {
     position: relative;
-    width: 30rem;
     background: var(--color-brand);
     border-radius: var(--rad);
 }
@@ -142,6 +142,7 @@ label {
     position: relative;
     user-select: none;
     font-size:1.3rem;
+    border-radius: var(--rad);
 }
 
 .select_wrap .default_option{
@@ -155,6 +156,7 @@ label {
 .select_wrap .default_option li{
     padding: 16px;
     list-style-type: none;
+
 }
 
 .select_wrap .default_option:before{
@@ -218,12 +220,18 @@ label {
 
 
 @media screen and (max-width: 491px)  {
-    .card {
+    .card, form {
         flex: 0 1 100%;
         margin-bottom: 5%;
     }
     .cards-container {
         gap: 0;
+    }
+    .actions_container {
+        gap: 0;
+    }
+    .select_wrap,form {
+        width: 100%;
     }
 }
 
@@ -232,8 +240,11 @@ label {
         flex: 0 1 48.5%;
         margin-bottom: 3%;
     }
-    .cards-container {
+    .cards-container,.actions_container {
         gap: 3%;
+    }
+    .select_wrap,form {
+        width: 48.5%;
     }
 }
 
@@ -245,6 +256,15 @@ label {
     .cards-container {
         gap: 3%;
     }
+    .actions_container {
+        gap: 3%;
+    }
+    .select_wrap {
+        width: 31%;
+    }
+    form {
+        width: 65%;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -254,6 +274,15 @@ label {
     }
     .cards-container {
         gap: 2%;
+    }
+    .actions_container {
+        gap: 27.5%;
+    }
+    .select_wrap {
+        width: 23.5%;
+    }
+    form {
+        width: 49%;
     }
 }
 
