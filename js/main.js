@@ -31,7 +31,7 @@ const Countries = Backbone.Collection.extend({
 });
 
 const CountriesView = Backbone.View.extend({
-    el: '.cards-container',
+    el: '.content',
     template: _.template('<div class="card">\n' +
         '        <div class="img-container">\n' +
         '           <img src="<%= flagURL %>" alt="flag"/>\n' +
@@ -46,6 +46,11 @@ const CountriesView = Backbone.View.extend({
         '        </div>\n' +
         '    </div>'),
     model: new Country(),
+    events: {
+        "click .default_option": "openDropdown",
+        "click .select_ul li": "applyFilter",
+        "click #top-arrow": "scrollTop"
+    },
     initialize: function() {
         _.bindAll(this, 'render');
         this.collection = new Countries();
@@ -55,15 +60,47 @@ const CountriesView = Backbone.View.extend({
         });
     },
     render: function() {
-        this.$el.empty();
+        $('.cards-container').empty();
         this.addAll();
         return this;
     },
     addAll: function() {
+        console.log('THIS COLLECTION', this.collection)
         this.collection.each(this.addOne, this);
     },
     addOne: function(model) {
-        this.$el.append(this.template(model.toJSON()));
+        $('.cards-container').append(this.template(model.toJSON()));
+    },
+    openDropdown: function(e) {
+        $(e.currentTarget).parent().toggleClass("active")
+    },
+    applyFilter: function(e) {
+        let self = this;
+        let currentEl = $(e.currentTarget).html();
+        $(".default_option li").html(currentEl);
+        let innerValue = $.trim($(".default_option li").text())
+        $(e.currentTarget).parents(".select_wrap").removeClass("active");
+        let filteredCountries = this.collection.filter(function (item) {
+            return item.get("region") === innerValue;
+        });
+        $('.cards-container').empty();
+        _.each(filteredCountries, function(model){
+            $('.cards-container').append(self.template(model.toJSON()));
+        }, self);
+        // this.collection = new Countries(tade);
+        // this.render();
+
+        // this.collection.each(function(item){
+        //     console.log($(e.currentTarget))
+        //     if (item.get('subregion') === currentEl){
+        //         console.log(item)
+        //     }
+        // }, this);
+    },
+    scrollTop: function() {
+        console.log('TOP')
+        console.log(window);
+        $(window).scrollTop(0);
     }
 });
 

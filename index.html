@@ -17,7 +17,7 @@
     <section class="actions_container">
         <form role="search">
             <input id="search" type="search" placeholder="Search for a country" autofocus required />
-            <button type="submit">Go</button>
+            <button id='go' type="submit">Go</button>
         </form>
         <div class="select_wrap">
             <ul class="default_option">
@@ -55,23 +55,25 @@
 <!--            <p><strong>Population:</strong> 30.000.000</p>-->
 <!--        </div>-->
 <!--    </div>-->
-
     </section>
+
+    <button id="top-arrow">&uarr;</button>
+
 </div>
 
 <script src="js/lib/jquery-min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
 <script>
-    $(".default_option").click(function(){
-        $(this).parent().toggleClass("active");
-    })
-
-    $(".select_ul li").click(function(){
-        var currentele = $(this).html();
-        $(".default_option li").html(currentele);
-        $(this).parents(".select_wrap").removeClass("active");
-    })
+    // $(".default_option").click(function(){
+    //     $(this).parent().toggleClass("active");
+    // })
+    //
+    // $(".select_ul li").click(function(){
+    //     var currentele = $(this).html();
+    //     $(".default_option li").html(currentele);
+    //     $(this).parents(".select_wrap").removeClass("active");
+    // })
 </script>
 <script src="js/main.js"></script>
 
