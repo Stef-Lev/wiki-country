@@ -49,9 +49,7 @@ const CountriesView = Backbone.View.extend({
     events: {
         "click .default_option": "openDropdown",
         "click .select_ul li": "applyFilter",
-        "click #top-arrow": "scrollTop",
-        "click #go": "searchFor",
-        "input #search": "clearSearch"
+        "click #top-arrow": "scrollTop"
     },
     initialize: function() {
         _.bindAll(this, 'render');
@@ -79,40 +77,20 @@ const CountriesView = Backbone.View.extend({
     applyFilter: function(e) {
         let self = this;
         let currentEl = $(e.currentTarget).html();
-        let selectInput = ".default_option li"
-        $(selectInput).html(currentEl);
-        let innerValue = $.trim($(selectInput).text())
+        $(".default_option li").html(currentEl);
+        let innerValue = $.trim($(".default_option li").text())
         $(e.currentTarget).parents(".select_wrap").removeClass("active");
-        let filteredCountries = self.collection.filter(function (item) {
-            if (innerValue === 'World') {
-                return item.get("region") !== innerValue;
-            } else {
-                return item.get("region") === innerValue;
-            }
+        let filteredCountries = this.collection.filter(function (item) {
+            return item.get("region") === innerValue;
         });
         $('.cards-container').empty();
         _.each(filteredCountries, function(model){
             $('.cards-container').append(self.template(model.toJSON()));
         }, self);
     },
-    searchFor: function(){
-        let inputVal = $('#search').val();
-        let searchTerm = inputVal.charAt(0).toUpperCase() + inputVal.slice(1).toLowerCase();
-        let self = this;
-        let searchedCountries = self.collection.filter(function (item) {
-            return item.get("name").indexOf(searchTerm) !== -1;
-        });
-        $('.cards-container').empty();
-        _.each(searchedCountries, function(model){
-            $('.cards-container').append(self.template(model.toJSON()));
-        }, self);
-    },
-    clearSearch: function(e){
-        if (e.target.value === '') {
-            window.location.reload();
-        }
-    },
     scrollTop: function() {
+        console.log('TOP')
+        console.log(window);
         $(window).scrollTop(0);
     }
 });

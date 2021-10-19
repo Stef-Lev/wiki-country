@@ -66,7 +66,7 @@ header {
     padding: 22px;
 }
 
-form {
+#form {
     position: relative;
     background: var(--color-brand);
     border-radius: var(--rad);
@@ -235,7 +235,7 @@ label {
 
 
 @media screen and (max-width: 491px)  {
-    .card, form {
+    .card, #form {
         flex: 0 1 100%;
         margin-bottom: 5%;
     }
@@ -245,7 +245,7 @@ label {
     .actions_container {
         gap: 0;
     }
-    .select_wrap,form {
+    .select_wrap,#form {
         width: 100%;
     }
 }
@@ -258,7 +258,7 @@ label {
     .cards-container,.actions_container {
         gap: 3%;
     }
-    .select_wrap,form {
+    .select_wrap,#form {
         width: 48.5%;
     }
 }
@@ -277,7 +277,7 @@ label {
     .select_wrap {
         width: 31%;
     }
-    form {
+    #form {
         width: 65%;
     }
 }
@@ -296,7 +296,7 @@ label {
     .select_wrap {
         width: 23.5%;
     }
-    form {
+    #form {
         width: 49%;
     }
 }
